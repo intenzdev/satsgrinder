@@ -1,0 +1,74 @@
+.signupbody .content{
+    margin-top: 3%;
+}
+
+.signupbody .type{
+    color: #fff;
+    padding-bottom: 1%;
+}
+
+.signupbody .section{
+    padding-top: 1.5%;
+    width: 100%;
+}
+
+.signupbody .section input:focus {
+    outline: none;
+}
+
+.signupbody .section input{
+    line-height: 1;
+    font-size: 15px;
+    width: 100%;
+    padding: 1.8%;
+    border-radius: 15px;
+}
+
+.signupbody .checkboxtype{
+    display: flex;
+    color: #fff;
+    align-items: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.signupbody .checkboxtype input{
+    width: 10%;
+    padding: 1.4%;
+}
+
+.signupbody .checkboxtype a{
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.signupbody button[type="submit"] {
+    width: 100%;
+    padding: 1.8%;
+    border: none;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 17.5px;
+}
+
+.signupbody .wrapper{
+    padding-top: 3%;
+    text-align: center;
+}
+.signupbody .wrapper p{
+    color: white;
+}
+
+.signupbody .wrapper a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signupbody .section .h-captcha{
+    display: flex;
+    justify-content: center;
+    transform: scale(0.8);
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATSGRINDER</title>
+    <link rel="stylesheet" href="css/app/layout.css">
+    <link rel="stylesheet" href="css/app/mainheader.css">
+    <link rel="stylesheet" href="css/app/faucet/style.css">
+    <link rel="stylesheet" href="css/app/layout.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/notifications.css">
+
+</head>
+<body>
+    
+    <div class="main-banner">
+            <div class="sticky-banner" id="sticky-banner">
+                <span class="logo">
+                    <span class="logo-sats">SATS</span><span class="logo-grinder">GRINDER</span>
+                       
+                </span>
+            </div>
+    </div>
+    <section class="main-container">
+        <div class="container">
+            <div class="side-menu">
+                <div class="content">
+                    <button onclick="window.location.href='/app-home'">Home</button>
+                    <button onclick="window.location.href='/app-faucet'">Faucet</button>
+                    <button onclick="window.location.href='https://example.com/page3'">Settings</button>
+                    <button onclick="window.location.href='https://example.com/page3'">Withdraw</button>
+                </div>
+            </div>
+            <div class="site-container">
+                    <div class="content-areas">
+                        <div class="content-beta">
+                            <p>SATSGRINDER STILL IN BETA</p>
+                        </div>
+                    </div>
+                    <div class="content-areas">
+                        <div class="content-faucet">
+                            <button id="claimButton" disabled>Claim</button>
+                        </div>
+                    </div>
+                    
+                    
+
+            </div>
+        </div>
+    </section>
+        
+        <footer>
+            <hr>
+            <p>&copy; 2025 SATSGRINDER. All rights reserved.</p>
+        </footer>
+    
+
+    <script src="script/notification.js"></script>
+    <script src="script/cookies.js"></script>
+    <script src="script/app/faucet.js"></script> 
+    <script>history.pushState(null, '', '/app-faucet');</script>
+</body>
+</html>

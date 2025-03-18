@@ -1,0 +1,36 @@
+.main-container .container .site-container .content-areas{
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    padding: 5%;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.main-container .container .site-container .content-areas .content-beta {
+    font-size: 17.5px;
+}
+.main-container .container .site-container .content-areas .content-faucet {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.main-container .container .site-container .content-areas .content-faucet button {
+    color: #fff;
+    background-color: var(--blue);
+    padding: 2.5%;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.main-container .container .site-container .content-areas .content-faucet button:disabled {
+    background-color: #2E2E2E;
+    cursor: not-allowed;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATSGRINDER</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mainheader.css">
+    <link rel="stylesheet" href="css/login/logintop.css">
+    <link rel="stylesheet" href="css/login/loginbody.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/notifications.css">
+
+    
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+        <div class="main-banner">
+            <section class="content container">
+                <div class="sticky-banner" id="sticky-banner">
+                    <span class="logo">
+                        <span class="logo-sats">SATS</span><span class="logo-grinder">GRINDER</span>
+                    </span>
+                </div>
+            </section>
+        </div>
+        
+        <div class="logintop" >
+            <section class="content container">
+                <div class="items">
+                <div class="logo">
+                    <img src="img/logo.png" alt="/">
+                </div>            
+                <div class="subtitle">
+                    <h1><span class="blue">WELCOME </span>BACK</h1>
+                    <p>Back to the action</p>
+                </div>
+                </div>
+            </section>
+        </div>
+        
+        <div class="loginbody">
+            <section class="content container">
+                <form id="loginForm">
+                    <div class="section">
+                        <div class="type">
+                            <p>Email: </p>
+                        </div>
+                        <input type="email" id="email" required />
+                    </div>
+                    <div class="section">
+                        <div class="type">
+                            <p>Password: </p>
+                        </div>
+                        <input type="password" id="password" required />
+                    </div>
+                    <div class="section">
+                        <div class="h-captcha" data-sitekey="a1c0efea-0e88-400e-b1d8-89a4531272b0" required></div>
+                    </div>
+                    <div class="section">
+                        <button type="submit">Login</button>
+                    </div>
+                    <div class="wrapper">
+                        <div class="signup">
+                            <p>
+                                New here? 
+                                <a href="/signup">Get Started</a>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        
+        <footer>
+            <section class="container">
+            <hr>
+            <p>&copy; 2025 SATSGRINDER. All rights reserved.</p>
+            </section>
+        </footer>
+
+    <script src="script/notification.js"></script>
+    <script src="script/cookies.js"></script>
+    <script src="script/mainbannerscroll.js"></script>
+    <script src="script/app/login.js"></script> 
+    <script>history.pushState(null, '', '/login');</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.sticky-banner {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(26, 198, 255, 0); 
+    background: #11141b;
+    z-index: 1000;
+    border-bottom: 2px solid var(--blue);
+    
+    
+}
+
+.sticky-banner .logo {
+    text-align: left;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.sticky-banner .logo .logo-sats {
+    color: var(--blue); 
+}
+
+.sticky-banner .logo .logo-grinder {
+    color: #fff;
+}
