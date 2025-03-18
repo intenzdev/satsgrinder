@@ -1,0 +1,30 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <button class="button" onclick="window.location.href='/signup'">Sign Up</button>
+    <button class="button" onclick="window.location.href='/captcha.html'">captcha site</button>
+    <form id="registerForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <label for="birthday">birthday:</label>
+        <input type="date" id="birthday" name="birthday" required />
+
+        <button type="submit">Register</button>
+    </form>
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+    </form>
+    <script src="script/register.js"></script>
+    <script src="script/login.js"></script>
+    
+</body>
+</html>

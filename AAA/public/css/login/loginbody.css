@@ -1,0 +1,57 @@
+.loginbody .content{
+    margin-top: 3%;
+}
+
+.loginbody .type{
+    color: #fff;
+    padding-bottom: 1%;
+}
+
+.loginbody .section{
+    padding-top: 1.5%;
+    width: 100%;
+}
+
+.loginbody .section input:focus {
+    outline: none;
+}
+
+.loginbody .section input{
+    line-height: 1;
+    font-size: 15px;
+    width: 100%;
+    padding: 1.8%;
+    border-radius: 15px;
+}
+
+.loginbody button[type="submit"] {
+    width: 100%;
+    padding: 1.8%;
+    border: none;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 17.5px;
+}
+
+.loginbody .wrapper{
+    padding-top: 3%;
+    text-align: center;
+}
+.loginbody .wrapper p{
+    color: white;
+}
+
+.loginbody .wrapper a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.loginbody .section .h-captcha{
+    display: flex;
+    justify-content: center;
+    transform: scale(0.8);
+}

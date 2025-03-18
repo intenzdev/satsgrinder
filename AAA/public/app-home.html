@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATSGRINDER</title>
+    <link rel="stylesheet" href="css/app/layout.css">
+    <link rel="stylesheet" href="css/app/mainheader.css">
+    <link rel="stylesheet" href="css/app/home/style.css">
+    <link rel="stylesheet" href="css/app/layout.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/notifications.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flaticon/2.1.2/flaticon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.0.3/css/phosphor.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+    
+    <div class="main-banner">
+            <div class="sticky-banner" id="sticky-banner">
+                <span class="logo">
+                    <span class="logo-sats">SATS</span><span class="logo-grinder">GRINDER</span>
+                       
+                </span>
+            </div>
+    </div>
+    <section class="main-container">
+        <div class="container">
+            <div class="side-menu">
+                <div class="content">
+                    <button onclick="window.location.href='https://example.com/page1'">Home</button>
+                    <button onclick="window.location.href='/app-faucet'">Faucet</button>
+                    <button onclick="window.location.href='https://example.com/page3'">Settings</button>
+                    <button onclick="window.location.href='https://example.com/page3'">Withdraw</button>
+                </div>
+            </div>
+            <div class="site-container">
+                    <div class="content-areas">
+                        <div class="content-beta">
+                            <p>SATSGRINDER STILL IN BETA</p>
+                        </div>
+                    </div>
+                    <div class="content-areas">
+                        <div class="ad-space">
+                            <img src="/img/youradgoeshere.png" alt="Your Ad Here">
+                        </div>
+                    </div>
+                    <div class="content-areas">
+                        <div class="content-wallet">
+                            <h2>WALLET</h2>
+                            <p>AVAILABLE BALANCE:</p>
+                            <span id="sats">SATS</span>
+                        </div>
+                    </div>
+                    <div class="content-areas">
+                        <div class="content-withdraws">
+                            <h2>WITHDRAWS</h2>
+                            <div class="withdraws">
+                                <div id="cashouts"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+            </div>
+        </div>
+    </section>
+        
+        <footer>
+            <hr>
+            <p>&copy; 2025 SATSGRINDER. All rights reserved.</p>
+        </footer>
+    
+
+    <script src="script/notification.js"></script>
+    <script src="script/cookies.js"></script>
+    <script src="script/app/home.js"></script> 
+    <script>history.pushState(null, '', '/app-home');</script>
+</body>
+</html>

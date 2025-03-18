@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATSGRINDER</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mainheader.css">
+    <link rel="stylesheet" href="css/signup/signuptop.css">
+    <link rel="stylesheet" href="css/signup/signupbody.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/notifications.css">
+
+    
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+        <div class="main-banner">
+            <section class="content container">
+                <div class="sticky-banner" id="sticky-banner">
+                    <span class="logo">
+                        <span class="logo-sats">SATS</span><span class="logo-grinder">GRINDER</span>
+                    </span>
+                    
+                </div>
+            </section>
+        </div>
+        
+        <div class="signuptop" >
+            <section class="content container">
+                <div class="items">
+                <div class="logo">
+                    <img src="img/logo.png" alt="/">
+                </div>            
+                <div class="subtitle">
+                    <h1><span class="blue">BECOME </span>A MEMBER</h1>
+                    <p>Your SATS journey starts here!</p>
+                </div>
+                </div>
+            </section>
+        </div>
+        
+        <div class="signupbody">
+            <section class="content container">
+                <form id="registerForm">
+                    <div class="section">
+                        <div class="type">
+                            <p>Username: <span class="red">*</span></p>
+                        </div>
+                        <input type="text" id="username" required />
+                    </div>
+                    <div class="section">
+                        <div class="type">
+                            <p>Email: <span class="red">*</span></p>
+                        </div>
+                        <input type="email" id="email" required />
+                    </div>
+                    <div class="section">
+                        <div class="type">
+                            <p>Password: <span class="red">*</span></p>
+                        </div>
+                        <input type="password" id="password" required />
+                    </div>
+                    
+                    <div class="section">
+                        <div class="checkboxtype">
+                            <input type="checkbox" id="termsCheckbox" required>
+                            <p>I have read and agree to the <a href="#" target="_blank">terms and conditions</a>.</p>
+                        </div>
+                    <div class="section">
+                        <div class="h-captcha" data-sitekey="a1c0efea-0e88-400e-b1d8-89a4531272b0"></div>
+                    </div>
+                    </div>
+                    <div class="section">
+                        <button type="submit">Sign up</button>
+                    </div>
+                    <div class="wrapper">
+                        <div class="login">
+                            <p>
+                                Already have an account? 
+                                <a href="/login">Log in</a>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        
+        <footer>
+            <section class="container">
+            <hr>
+            <p>&copy; 2025 SATSGRINDER. All rights reserved.</p>
+            </section>
+        </footer>
+
+    <script src="script/notification.js"></script>
+    <script src="script/cookies.js"></script>
+    <script src="script/mainbannerscroll.js"></script>
+    <script src="script/app/register.js"></script> 
+    <script>history.pushState(null, '', '/signup');</script>
+</body>
+</html>

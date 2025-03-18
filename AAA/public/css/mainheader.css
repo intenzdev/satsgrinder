@@ -1,0 +1,33 @@
+.sticky-banner {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(26, 198, 255, 0); 
+    z-index: 1000;
+}
+
+.sticky-banner.scrolled {
+    background: linear-gradient(to right, rgba(35, 37, 38, 0.8), rgba(65, 67, 69, 0.8));
+    border-bottom: 2px solid  var(--blue); 
+}
+
+.sticky-banner .logo {
+    text-align: left;
+    font-size: 2em;
+    font-weight: bold;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.sticky-banner .logo-sats {
+    color: var(--blue); 
+}
+
+.sticky-banner .logo-grinder {
+    color: #fff;
+}
+
+
