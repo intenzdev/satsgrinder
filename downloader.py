@@ -1,35 +1,50 @@
+import os
 import requests
 import zipfile
-import os
+import io
 
-# URL der ZIP-Datei
-zip_url = "https://cdn.discordapp.com/attachments/1343330892315103243/1351499298193408072/AAA.zip?ex=67da994e&is=67d947ce&hm=bd180119030d9efc82e6de537da56149dc4326e0fa1431fd2021f35d74c63bf7"
+# Repository-Informationen
+REPO_OWNER = "intenzdev"
+REPO_NAME = "satsgrinder"
+BRANCH = "codespace-ominous-space-engine-96545xp77xhpgwg"
+FOLDER = "AAA"
 
-# Speicherpfad für die heruntergeladene ZIP-Datei
-zip_file_path = "downloaded_file.zip"
+# GitHub-API-URL, um den Branch als ZIP-Datei herunterzuladen
+ZIP_URL = f"https://github.com/{REPO_OWNER}/{REPO_NAME}/archive/refs/heads/{BRANCH}.zip"
 
-# Herunterladen der ZIP-Datei
-print("Lade die ZIP-Datei herunter...")
-response = requests.get(zip_url, stream=True)
-if response.status_code == 200:
-    with open(zip_file_path, "wb") as zip_file:
-        for chunk in response.iter_content(chunk_size=1024):
-            zip_file.write(chunk)
-    print(f"ZIP-Datei erfolgreich heruntergeladen: {zip_file_path}")
-else:
-    print(f"Fehler beim Herunterladen der Datei. Statuscode: {response.status_code}")
-    exit()
+def download_and_extract_folder():
+    print("Lade Repository-ZIP herunter...")
+    response = requests.get(ZIP_URL)
 
-# Entpacken der ZIP-Datei ins aktuelle Verzeichnis
-print("Entpacke die ZIP-Datei...")
-try:
-    with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-        zip_ref.extractall(".")  # Entpacke Dateien ins aktuelle Verzeichnis
-        print("Dateien wurden erfolgreich entpackt.")
-except zipfile.BadZipFile:
-    print("Die heruntergeladene Datei ist keine gültige ZIP-Datei.")
-    exit()
+    if response.status_code == 200:
+        print("ZIP-Datei erfolgreich heruntergeladen. Entpacke Dateien...")
+        
+        # ZIP-Datei im Speicher öffnen
+        with zipfile.ZipFile(io.BytesIO(response.content)) as zip_file:
+            # Extrahiere nur den Ordner "AAA"
+            extracted_files = [
+                item for item in zip_file.namelist() 
+                if item.startswith(f"{REPO_NAME}-{BRANCH}/{FOLDER}/")
+            ]
+            
+            if not extracted_files:
+                print(f"Der Ordner '{FOLDER}' wurde im Branch '{BRANCH}' nicht gefunden.")
+                return
 
-# Optional: Löschen der ZIP-Datei nach dem Entpacken
-os.remove(zip_file_path)
-print("Die heruntergeladene ZIP-Datei wurde gelöscht.")
+            # Extrahiere die Dateien ins aktuelle Verzeichnis
+            for file in extracted_files:
+                file_path = file.replace(f"{REPO_NAME}-{BRANCH}/", "")
+                if file.endswith("/"):  # Skippe Ordner, erstelle sie stattdessen
+                    os.makedirs(file_path, exist_ok=True)
+                else:
+                    with open(file_path, "wb") as f:
+                        f.write(zip_file.read(file))
+                    print(f"Erstellt: {file_path}")
+
+        print("Alle Dateien wurden erfolgreich heruntergeladen und extrahiert.")
+    else:
+        print(f"Fehler beim Herunterladen: {response.status_code}")
+        print(response.text)
+
+if __name__ == "__main__":
+    download_and_extract_folder()

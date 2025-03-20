@@ -1,0 +1,94 @@
+.main-container .container .site-container .content-areas{
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    padding: 5%;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.main-container .container .site-container .content-areas .content-beta {
+    font-size: 17.5px;
+}
+.main-container .container .site-container .content-areas .content-withdraw form#withdrawForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main-container .container .site-container .content-areas .content-withdraw h2{
+    margin-bottom: 1%;
+}
+
+.main-container .container .site-container .content-areas .content-withdraw form .info p{
+    font-size: 20px;
+    padding-bottom: 1%;
+}
+
+
+
+.main-container .container .site-container .content-areas .content-withdraw .satsinput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1%;
+    margin-left: 7.5%;
+
+}
+
+
+.main-container .container .site-container .content-areas .content-withdraw input {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    width: 100%;
+    padding: 2.5%;
+    font-size: 15px;
+    color: var(--blue);
+    outline: none;
+}
+
+
+.main-container .container .site-container .content-areas .content-withdraw .satsinput input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.main-container .container .site-container .content-areas .content-withdraw .satsinput input::placeholder {
+    color: var(--blue);
+}
+
+
+.main-container .container .site-container .content-areas .content-withdraw .satsinput p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.main-container .container .site-container .content-areas .content-withdraw button {
+    margin-top: 2%;
+    color: #fff;
+    background-color: var(--blue);
+    padding: 2%;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none; 
+}
+
+.main-container .container .site-container .content-areas .content-withdraw button:disabled {
+    background-color: #2E2E2E;
+    color: #aaa; 
+    cursor: not-allowed;
+    outline: none;
+}
+
+.main-container .container .site-container .content-areas .content-withdraw button:focus {
+    outline: none;
+    box-shadow: none;
+}

@@ -32,10 +32,13 @@
         <div class="container">
             <div class="side-menu">
                 <div class="content">
-                    <button onclick="window.location.href='https://example.com/page1'">Home</button>
+                    <button id="active" onclick="window.location.href='/app-home'">Home</button>
                     <button onclick="window.location.href='/app-faucet'">Faucet</button>
-                    <button onclick="window.location.href='https://example.com/page3'">Settings</button>
-                    <button onclick="window.location.href='https://example.com/page3'">Withdraw</button>
+                    <button onclick="window.location.href='https://discord.gg/dgKcTpjgWK'">Discord</button>
+                    <button onclick="window.location.href='/app-profile'">Profile</button>
+                    <button onclick="window.location.href='/app-withdraw'">Withdraw</button>
+                    <button onclick='deleteCookie("auth"); window.location.href="/signup";'>Logout</button>
+
                 </div>
             </div>
             <div class="site-container">
