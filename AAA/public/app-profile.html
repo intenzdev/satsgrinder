@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATSGRINDER</title>
+    <link rel="stylesheet" href="css/app/layout.css">
+    <link rel="stylesheet" href="css/app/mainheader.css">
+    <link rel="stylesheet" href="css/app/profile/style.css">
+    <link rel="stylesheet" href="css/app/layout.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/notifications.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flaticon/2.1.2/flaticon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.0.3/css/phosphor.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+
+</head>
+<body>
+    
+    <div class="main-banner">
+            <div class="sticky-banner" id="sticky-banner">
+                <span class="logo">
+                    <span class="logo-sats">SATS</span><span class="logo-grinder">GRINDER</span>
+                       
+                </span>
+            </div>
+    </div>
+    <section class="main-container">
+        <div class="container">
+            <div class="side-menu">
+                <div class="content">
+                    <button onclick="window.location.href='/app-home'">Home</button>
+                    <button onclick="window.location.href='/app-faucet'">Faucet</button>
+                    <button onclick="window.location.href='https://discord.gg/dgKcTpjgWK'">Discord</button>
+                    <button id="active" onclick="window.location.href='/app-profile'">Profile</button>
+                    <button onclick="window.location.href='/app-withdraw'">Withdraw</button>
+                    <button onclick='deleteCookie("auth"); window.location.href="/signup";'>Logout</button>
+
+                </div>
+            </div>
+            <div class="site-container">
+                    <div class="content-areas">
+                        <div class="content-beta">
+                            <p>SATSGRINDER STILL IN BETA</p>
+                        </div>
+                    </div>
+                    <div class="content-areas">
+                        <div class="content-stats">
+                            <div class="stats-divider">
+                                <div class="stats-box">
+                                    <h2>USERNAME:</h2>
+                                    <span id="username"></span>
+                                </div>
+                                <div class="stats-box">
+                                    <h2>WALLET</h2>
+                                    <span id="sats">SATS</span>
+                                </div>
+                            </div>
+                            <div class="stats-divider">
+                                <div class="stats-box">
+                                    <h2>WITHDRAWED SATS:</h2>
+                                    <span id="withdrawed_sats">SATS</span>
+                                </div>
+                                <div class="stats-box">
+                                    <h2>FAUCET CLAIMS:</h2>
+                                    <span id="faucet_claims">CLAIMS</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    
+
+            </div>
+        </div>
+    </section>
+        
+        <footer>
+            <hr>
+            <p>&copy; 2025 SATSGRINDER. All rights reserved.</p>
+        </footer>
+    
+
+    <script src="script/notification.js"></script>
+    <script src="script/cookies.js"></script>
+    <script src="script/app/profile.js"></script> 
+    <script>history.pushState(null, '', '/app-profile');</script>
+</body>
+</html>

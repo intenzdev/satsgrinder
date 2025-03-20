@@ -21,6 +21,59 @@ const secretKey = process.env.secret_key;
 const secretcrypt = process.env.secret;
 const hcaptcha_secret_key = process.env.hcaptcha_secret_key;
 const ADMIN_PASSWORD = process.env.admin_password;
+const blinkapiKey = process.env.blinkapiKey;
+const blinkapiUrl = process.env.blinkapiUrl;
+
+
+
+async function withdraw(address, amount) {
+    try {
+        const blinkwalletId = "74e24bc0-7aad-4bab-94aa-3f7fa8929f64";
+
+        const query = {
+            query: `
+                mutation LnAddressPaymentSend($input: LnAddressPaymentSendInput!) {
+                    lnAddressPaymentSend(input: $input) {
+                        status
+                        errors {
+                            code
+                            message
+                            path
+                        }
+                    }
+                }
+            `,
+            variables: {
+                input: {
+                    walletId: blinkwalletId,
+                    amount: amount,
+                    lnAddress: address
+                }
+            }
+        };
+
+        const response = await fetch(blinkapiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-API-KEY': blinkapiKey
+            },
+            body: JSON.stringify(query)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.data || result.data.lnAddressPaymentSend.errors.length > 0) {
+            return false;
+        }
+
+        return true
+    } catch (error) {
+        return false;
+    }
+}
+
+
 
 const secret = crypto.createHash('sha256').update(secretcrypt).digest(); 
 
@@ -47,12 +100,31 @@ function savelogin(data) {
 
 
 
+const codefile =  path.join("codes.json");
+
+async function loadcode() {
+    if (!fs.existsSync(codefile)) {
+        fs.writeFileSync(codefile, JSON.stringify({}));
+    }
+    return JSON.parse(fs.readFileSync(codefile));
+}
+function savecode(data) {
+    fs.writeFileSync(codefile, JSON.stringify(data, null, 2));
+}
+
+
+
+let code = {}; 
+
 let login = {}; 
 
 async function loadLogin() {
     login = await loadlogin();
+    code = await loadcode();
 }
-setInterval(loadLogin, 1000); 
+setInterval(loadLogin, 500); 
+
+
 
 
 async function genuserid() { 
@@ -148,7 +220,6 @@ async function checkCaptcha(token){
 async function checkTempmail(email) {
     const URL = 'https://raw.githubusercontent.com/disposable-email-domains/disposable-email-domains/main/disposable_email_blocklist.conf';
 
-    // Funktion, um die Liste asynchron zu laden
     const fetchDisposableEmailDomains = () => {
         return new Promise((resolve, reject) => {
             https.get(URL, (res) => {
@@ -176,10 +247,18 @@ async function checkTempmail(email) {
 }
 
 
-function addCashout(email, amount) {
+async function addCashout(email, amount) {
     const datecode = Date.now();
     const date = new Date(datecode).toLocaleDateString("de-DE");
     if (login[email]) {
+        if (!login[email].cashouts) {
+            login[email].cashouts = [];
+        }
+
+        if (login[email].cashouts.length >= 3) {
+            login[email].cashouts.shift(); 
+        }
+
         login[email].cashouts.push({ amount, date });
         savelogin(login);
     } else {
@@ -187,27 +266,107 @@ function addCashout(email, amount) {
     }
 }
 
-async function apphomedata(email) {
+async function userdata(email) {
     const username = login[email]?.username;
     const sats = login[email]?.sats;
     const cashouts = login[email].cashouts;
+    const totalcashout = login[email].totalcashout;
+    const totalclaims = login[email].totalclaims;
 
     return {
         email: email.toLowerCase(),
         username,
         sats,
         cashouts,
+        totalcashout,
+        totalclaims,
     };
 }
+const redeemCodeCooldown = new Map();
+app.post("/api/redeem-code", async (req, res) => {
+    const { authToken } = req.body;
+    const codee = req.body.codee?.toLowerCase();
+    const email = await getEmailFromAuthToken(authToken);
+    if (redeemCodeCooldown.has(email)) {
+        setTimeout(() => redeemCodeCooldown.delete(email), 5000);
+        return res.status(410).send();
+        
+    }
+    redeemCodeCooldown.set(email, Date.now());
+    
+    if (!login[email]) {
+        return res.status(400).send({ error: 'No account with that email!' }); 
+    }
+    if (!code[codee]) {
+        return res.status(411).send({ error: 'Invalid Code!' }); 
+    }
+    if (code[codee].codesleft === 0) {
+        return res.status(409).send({ error: 'Max code usage reached!' }); 
+    }
+    if (code[codee].usedemails.some(item => item === email)) {
+        return res.status(410).send({ error: 'Code already used!' }); 
+    }
+
+    const codesats = code[codee].rewardsats;
+
+    login[email].sats += codesats;
+    savelogin(login);
+    code[codee].usedemails.push({email});
+    code[codee].codesleft -= 1;
+    savecode(code);
+    
+    return res.status(200).send();
+
+});
+
+
+
+const withdrawCooldowns = new Map();
+app.post("/api/withdraw", async (req, res) => {
+
+    
+    const { authToken, ldaddress } = req.body;
+    const email = await getEmailFromAuthToken(authToken);
+    if (withdrawCooldowns.has(email)) {
+        return;
+    }
+    withdrawCooldowns.set(email, Date.now());
+    if (!login[email]) {
+        return res.status(409).send({ error: 'No account with that email!' }); 
+    }
+    if (login[email].banned) {
+        return res.status(410).send({ error: 'Your account has been banned and you can not withdraw' }); 
+    }
+
+    const sats = login[email].sats;
+    if (sats < 10) {
+        return res.status(411).send({ error: 'Minimum withdrawl is 10sats' }); 
+    }
+
+    const fee = Math.ceil(sats * 0.02); 
+    const amount = sats - fee -1;
+
+
+    if(await withdraw(ldaddress, amount )){
+        login[email].sats -= sats;
+        savelogin(login);
+        login[email].totalcashout += sats;
+        savelogin(login);
+        await addCashout(email, sats);
+        setTimeout(() => withdrawCooldowns.delete(email), 5000)
+        return res.status(200).send();
+    }
+    return res.status(400).send();
+});
+
 
 app.post("/api/userinfo", async (req, res) => {
     const { authToken } = req.body;
     const email = await getEmailFromAuthToken(authToken);
-    await addCashout(email, 9100)
     if (!login[email]) {
         return res.status(409).send({ error: 'No account with that email!' }); 
     }
-    const data = await apphomedata(email);
+    const data = await userdata(email);
     res.json(data);
 });
 
@@ -252,9 +411,11 @@ app.post('/api/claim', async (req, res) => {
     if (!lastFaucetClaim || now - lastFaucetClaim >= 60 * 60 * 1000) {
         login[email].last_faucet_claim = now;
         login[email].sats = (login[email].sats || 0) + 1;
+        login[email].totalclaims += 1;
         savelogin(login);
+        login = loadLogin();
 
-        return res.status(200).send({ success: true, sats: login[email].sats });
+        return res.status(200).send();
     }
 
     const timeElapsed = now - lastFaucetClaim;
@@ -317,8 +478,9 @@ app.post('/api/register', async (req, res) => {
     const country = await IpCountry(ip);
     const userid = await genuserid();
     const encrypted = encryptData(password);
-    login[email] = { password: `${encrypted}`, username: username, userid: userid, country: country, registerdate: Date.now(), banned: false, sats: 0, last_faucet_claim: 0, cashouts: []};
+    login[email] = { password: `${encrypted}`, username: username, userid: userid, country: country, registerdate: Date.now(), banned: false, sats: 0, last_faucet_claim: 0, totalcashout: 0, totalclaims: 0, cashouts: []};
     savelogin(login);
+    login = loadLogin()
     return res.status(200).send();
 });
 
@@ -389,6 +551,12 @@ app.get('/app-home', (req, res) => {
 });
 app.get('/app-faucet', (req, res) => { 
     res.sendFile(__dirname + '/public/app-faucet.html');
+});
+app.get('/app-withdraw', (req, res) => { 
+    res.sendFile(__dirname + '/public/app-withdraw.html');
+});
+app.get('/app-profile', (req, res) => { 
+    res.sendFile(__dirname + '/public/app-profile.html');
 });
 app.get('/adminpanel', (req, res) => { 
     res.sendFile(__dirname + '/public/admin.html');

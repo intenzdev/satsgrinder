@@ -27,9 +27,12 @@
             <div class="side-menu">
                 <div class="content">
                     <button onclick="window.location.href='/app-home'">Home</button>
-                    <button onclick="window.location.href='/app-faucet'">Faucet</button>
-                    <button onclick="window.location.href='https://example.com/page3'">Settings</button>
-                    <button onclick="window.location.href='https://example.com/page3'">Withdraw</button>
+                    <button id="active" onclick="window.location.href='/app-faucet'">Faucet</button>
+                    <button onclick="window.location.href='https://discord.gg/dgKcTpjgWK'">Discord</button>
+                    <button onclick="window.location.href='/app-profile'">Profile</button>
+                    <button onclick="window.location.href='/app-withdraw'">Withdraw</button>
+                    <button onclick='deleteCookie("auth"); window.location.href="/signup";'>Logout</button>
+
                 </div>
             </div>
             <div class="site-container">
@@ -38,9 +41,20 @@
                             <p>SATSGRINDER STILL IN BETA</p>
                         </div>
                     </div>
+                    
                     <div class="content-areas">
                         <div class="content-faucet">
+                            <h2>CLAIM 1 SAT</h2>
                             <button id="claimButton" disabled>Claim</button>
+                        </div>
+                    </div>
+                    <div class="content-areas">
+                        <div class="content-redeem">
+                            <h2>REDEEM CODE</h2>
+                            <form id="redeemForm">
+                                <input id="codeInput" type="text" placeholder="Code" required>
+                                <button id="redeemButton" >Redeem</button>
+                            </form>
                         </div>
                     </div>
                     

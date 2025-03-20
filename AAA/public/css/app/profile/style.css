@@ -1,0 +1,43 @@
+.main-container .container .site-container .content-areas{
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    padding: 5%;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.main-container .container .site-container .content-areas .content-beta {
+    font-size: 17.5px;
+}
+
+.main-container .container .site-container .content-areas .content-stats{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container .container .site-container .content-areas .content-stats .stats-divider{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+.main-container .container .site-container .content-areas .content-stats .stats-divider .stats-box{
+    width: 47.5%;
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    
+}
+
+.main-container .container .site-container .content-areas .content-stats .stats-divider .stats-box h2{
+    padding-bottom: 1%;
+}
