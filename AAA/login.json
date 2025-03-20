@@ -1,0 +1,28 @@
+{
+  "minewolf.gamer08@gmail.com": {
+    "password": "af4066e6b4047ce8294b07167c66aff7",
+    "username": "Intenz",
+    "userid": "744701742399029089",
+    "country": "Germany",
+    "registerdate": 1742399029089,
+    "banned": false,
+    "sats": 8,
+    "last_faucet_claim": 1742462971949,
+    "totalcashout": 75,
+    "totalclaims": 4,
+    "cashouts": [
+      {
+        "amount": 19,
+        "date": "19.3.2025"
+      },
+      {
+        "amount": 12,
+        "date": "19.3.2025"
+      },
+      {
+        "amount": 33,
+        "date": "19.3.2025"
+      }
+    ]
+  }
+}

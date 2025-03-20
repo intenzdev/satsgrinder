@@ -1,0 +1,35 @@
+
+.logintop .content {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 25px;
+    
+}
+
+.logintop h1{
+    margin-top: 1%;
+    font-size: 40px;
+}
+
+.logintop h1 .color{
+    color:  var(--blue); 
+}
+
+.logintop p{
+    padding-top: 1%;
+}
+
+.logintop .logo{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.logintop .logo img{
+    width: 7.5%;
+    border-radius: 25%;
+}

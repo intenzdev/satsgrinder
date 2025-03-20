@@ -1,0 +1,33 @@
+/* Grundlegendes Styling für die Notification */
+.notification {
+    position: fixed;
+    top: 0;
+    left: 15%; /* 15% Margin von links */
+    width: 70%; /* 70% Breite */
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+}
+
+/* Sichtbare Benachrichtigung */
+.notification.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(10px); /* Leichter Slide-in Effekt */
+}
+
+/* Grüner Hintergrund für erfolgreiche Nachrichten */
+.notification.good {
+    background-color: #4CAF50; /* Grün */
+}
+
+/* Roter Hintergrund für Fehlermeldungen */
+.notification.bad {
+    background-color: #f44336; /* Rot */
+}

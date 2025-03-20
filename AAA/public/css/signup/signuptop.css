@@ -1,0 +1,35 @@
+
+.signuptop .content {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 25px;
+    
+}
+
+.signuptop h1{
+    margin-top: 1%;
+    font-size: 40px;
+}
+
+.signuptop h1 .color{
+    color:  var(--blue); 
+}
+
+.signuptop p{
+    padding-top: 1%;
+}
+
+.signuptop .logo{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.signuptop .logo img{
+    width: 7.5%;
+    border-radius: 25%;
+}

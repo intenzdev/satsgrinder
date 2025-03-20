@@ -1,0 +1,106 @@
+:root {
+    --blue: #1a8dff;
+    --red: #ff1a1a;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #11141b;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    padding: 0;
+    position: relative;
+}
+
+.main-container{
+    margin-top: 10%;
+    overflow: hidden;
+    width: 100%;
+}
+.main-container .container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.main-container .container .side-menu{
+    width: 15%;
+    border-right: 2px solid var(--blue);
+}
+
+.main-container .container .side-menu .content{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.main-container .container .site-container{
+    width: 85%;
+}
+.main-container .container .site-container{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.main-container .container .side-menu .content button {
+    padding: 5%;
+    border: 1px solid var(--blue);
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 15px;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    cursor: default;
+    transition: background-color 0.3s ease;
+}
+.main-container .container .side-menu .content button#active {
+    color: var(--blue);
+}
+
+.main-container .container .side-menu .content button:hover {
+    background-color: rgba(50, 50, 50, 1);
+    cursor: pointer;
+}
+
+
+footer{
+    padding-top: 5%;
+    padding-bottom: 3%;
+}
+footer hr{
+    border-color: var(--blue);
+    margin-bottom: 3%;
+}
+footer p{
+    
+    margin-right: 5%;
+    color: #fff;
+    width: auto;
+    float: right;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    body {
+        transform: scale(0.9);
+    }
+    .container {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        overflow: hidden;
+    }
+}

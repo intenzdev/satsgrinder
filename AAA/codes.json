@@ -1,0 +1,12 @@
+{
+    "codohondo-ONLY TEST": {
+    "usedemails": [],
+    "codesleft": 0,
+    "rewardsats": 5
+    },
+    "LAUNCH": {
+        "usedemails": [],
+        "codesleft": 20,
+        "rewardsats": 25
+    }
+}

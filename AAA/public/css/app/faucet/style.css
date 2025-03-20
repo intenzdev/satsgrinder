@@ -1,0 +1,82 @@
+.main-container .container .site-container .content-areas{
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    padding: 5%;
+    font-size: 15px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.main-container .container .site-container .content-areas .content-beta {
+    font-size: 17.5px;
+}
+.main-container .container .site-container .content-areas .content-faucet {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main-container .container .site-container .content-areas .content-faucet h2 {
+    padding-bottom: 2%;
+}
+.main-container .container .site-container .content-areas .content-redeem h2 {
+    padding-bottom: 2%;
+}
+.main-container .container .site-container .content-areas .content-redeem form {
+    display: flex;
+    flex-direction: column;
+}
+.main-container .container .site-container .content-areas .content-redeem input {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    width: 100%;
+    padding: 2.5%;
+    font-size: 15px;
+    color: var(--blue);
+    outline: none;
+    margin-bottom: 2%;
+}
+
+
+.main-container .container .site-container .content-areas .content-redeem input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.main-container .container .site-container .content-areas .content-redeem button{
+    color: #fff;
+    background-color: var(--blue);
+    padding: 2.5%;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.main-container .container .site-container .content-areas .content-redeem button:disabled {
+    background-color: #2E2E2E;
+    cursor: not-allowed ;
+    outline: none ;
+    box-shadow: none;
+    border: 1px solid #2E2E2E;
+}
+
+.main-container .container .site-container .content-areas .content-faucet button {
+    color: #fff;
+    background-color: var(--blue);
+    padding: 2.5%;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.main-container .container .site-container .content-areas .content-faucet button:disabled {
+    background-color: #2E2E2E;
+    cursor: not-allowed;
+}
